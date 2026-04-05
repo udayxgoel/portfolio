@@ -322,7 +322,6 @@ export default function Page() {
                   href={project.href}
                   title={project.title}
                   description={project.description}
-                  dates={project.dates}
                   tags={project.technologies}
                   image={project.image}
                   video={project.video}

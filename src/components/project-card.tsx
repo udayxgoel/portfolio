@@ -9,7 +9,6 @@ interface Props {
   title: string;
   href?: string;
   description: string;
-  dates: string;
   tags: readonly string[];
   link?: string;
   image?: string;
@@ -26,7 +25,6 @@ export function ProjectCard({
   title,
   href,
   description,
-  dates,
   tags,
   link,
   image,
@@ -74,12 +72,6 @@ export function ProjectCard({
                     {title}
                   </CardTitle>
                 </div>
-
-                {dates ? (
-                  <time className="text-xs uppercase tracking-[0.22em] text-zinc-500">
-                    {dates}
-                  </time>
-                ) : null}
               </div>
 
               {/* Link badges (Live, GitHub, etc.) */}
