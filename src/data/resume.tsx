@@ -5,36 +5,103 @@ export const DATA = {
   name: "Uday Goel",
   initials: "UG",
   url: "https://udaygoel.me",
-  location: "Haryana, IN",
+  location: "India",
   locationLink: "https://www.google.com/maps/place/India",
   description:
-    "Full-Stack Developer | Tech Enthusiast | Lifelong Learner and Innovator 🚀",
-  summary: `A Full Stack Developer working at the intersection of learning, building, and sharing. While pursuing my graduation and working in the industry, I’ve been crafting projects with my skills and improving daily through consistent problem-solving. My goal is simple: build useful products, grow as an engineer, and document the journey so others can grow with me.
+    "Full-Stack Developer | Tech Enthusiast | Lifelong Learner and Innovator",
+  summary: `I’m a **Full Stack Developer** who enjoys building products that solve real problems, not just projects that look good in screenshots. I work with **Next.js**, **TypeScript**, **TailwindCSS**, **Express**, **Node.js**, **MongoDB**, and **PostgreSQL** to ship fast, clean, and scalable experiences.
 `,
+  visitorCount: 63,
   avatarUrl: "/me.jpg",
   skills: [
-    "Next.js",
-    "Typescript",
-    "React",
-    "Node.js",
-    "TailwindCSS",
-    "Python",
-    "Postgres",
-    "Java",
-    "C++",
-    "HTML",
-    "CSS",
-    "JavaScript",
-    "Express.js",
-    "MongoDB",
-    "MySQL",
-    "Git",
-    "GitHub",
-    "VS Code",
-    "Postman",
-    "REST APIs",
-    "Authentication",
-    "AWS",
+    {
+      name: "Next.js",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    },
+    {
+      name: "TypeScript",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+    },
+    {
+      name: "React",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    },
+    {
+      name: "Node.js",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    },
+    {
+      name: "TailwindCSS",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+    },
+    {
+      name: "Python",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    },
+    {
+      name: "Postgres",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+    },
+    {
+      name: "Java",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+    },
+    {
+      name: "C++",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
+    },
+    {
+      name: "HTML",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    },
+    {
+      name: "CSS",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+    },
+    {
+      name: "JavaScript",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    },
+    {
+      name: "Express.js",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+    },
+    {
+      name: "MongoDB",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    },
+    {
+      name: "MySQL",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+    },
+    {
+      name: "Git",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+    },
+    {
+      name: "GitHub",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+    },
+    {
+      name: "VS Code",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
+    },
+    {
+      name: "Postman",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg",
+    },
+    {
+      name: "REST APIs",
+      logo: "https://img.icons8.com/fluency/48/api-settings.png",
+    },
+    {
+      name: "Authentication",
+      logo: "https://img.icons8.com/fluency/48/key-security.png",
+    },
+    {
+      name: "AWS",
+      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg",
+    },
   ],
   navbar: [{ href: "/", icon: HomeIcon, label: "Home" }],
   contact: {
@@ -88,36 +155,11 @@ export const DATA = {
   work: [
     {
       company: "SquadifyPro",
-      location: "Haryana, IN",
+      location: "India",
       title: "Full Stack Developer",
       logoUrl: "/squadifypro.jpg",
       start: "Aug 2025",
       end: "Present",
-    },
-    {
-      company: "Freelancer, Remote",
-      badges: [],
-      location: "Haryana, IN",
-      title: "Frontend Developer",
-      logoUrl: "/fiverr.png",
-      start: "May 2024",
-      end: "July 2025",
-    },
-  ],
-  education: [
-    {
-      school: "Chandigarh University",
-      degree: "MCA",
-      logoUrl: "/cu.png",
-      start: "2025",
-      end: "Present",
-    },
-    {
-      school: "Kurukshetra University",
-      degree: "BCA",
-      logoUrl: "/ku.png",
-      start: "2022",
-      end: "2025",
     },
   ],
   projects: [
@@ -128,24 +170,15 @@ export const DATA = {
       active: true,
       description:
         "ProHire is a full-stack job portal web application where job seekers can search and apply for jobs, and recruiters can post and manage job listings.",
-      technologies: [
-        "React.js",
-        "Node.js",
-        "Express.js",
-        "Javascript",
-        "MongoDB",
-        "TailwindCSS",
-        "Redux Toolkit",
-        "Shadcn UI",
-      ],
+      technologies: ["React.js", "Node.js", "Express.js", "Javascript"],
       links: [
         {
-          type: "Website",
+          type: "Live",
           href: "https://prohirejobs.vercel.app",
           icon: <Icons.globe className="size-3" />,
         },
         {
-          type: "Source",
+          type: "GitHub",
           href: "https://github.com/udayxgoel/ProHire",
           icon: <Icons.github className="size-3" />,
         },
@@ -160,15 +193,7 @@ export const DATA = {
       active: true,
       description:
         "Wanderlust is a full-stack travel booking web application inspired by Airbnb. It allows users to explore, list, and book seamlessly.",
-      technologies: [
-        "Node.js",
-        "Express.js",
-        "EJS",
-        "Passport.js",
-        "Bootstrap",
-        "Cloudinary",
-        "MongoDB",
-      ],
+      technologies: ["Node.js", "Express.js", "EJS", "Passport.js"],
       links: [
         {
           type: "Website",
