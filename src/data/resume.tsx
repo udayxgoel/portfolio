@@ -6,12 +6,9 @@ export const DATA = {
   initials: "UG",
   url: "https://udaygoel.me",
   location: "India",
-  locationLink: "https://www.google.com/maps/place/India",
-  description:
-    "Full-Stack Developer | Tech Enthusiast | Lifelong Learner and Innovator",
   summary: `I’m a **Full Stack Developer** who enjoys building products that solve real problems, not just projects that look good in screenshots. I work with **Next.js**, **TypeScript**, **TailwindCSS**, **Express**, **Node.js**, **MongoDB**, and **PostgreSQL** to ship fast, clean, and scalable experiences.
 `,
-  visitorCount: 63,
+  visitorCount: 70,
   avatarUrl: "/me.jpg",
   skills: [
     {
@@ -112,28 +109,24 @@ export const DATA = {
         name: "Resume",
         url: "https://drive.google.com/file/d/1npdkxb0_vJycBX__XF4Dw2tL6N96fcN7/view?usp=drive_link",
         icon: Icons.resume,
-
         navbar: true,
       },
       GitHub: {
         name: "GitHub",
         url: "https://github.com/udayxgoel",
         icon: Icons.github,
-
         navbar: true,
       },
       LinkedIn: {
         name: "LinkedIn",
         url: "https://www.linkedin.com/in/udayxgoel",
         icon: Icons.linkedin,
-
         navbar: true,
       },
       X: {
         name: "X",
         url: "https://x.com/udayxgoel",
         icon: Icons.x,
-
         navbar: true,
       },
       Youtube: {
@@ -146,7 +139,6 @@ export const DATA = {
         name: "Send Email",
         url: "mailto:dev.udaygoel@gmail.com",
         icon: Icons.email,
-
         navbar: true,
       },
     },
@@ -166,7 +158,6 @@ export const DATA = {
     {
       title: "ProHire",
       href: "https://prohirejobs.vercel.app",
-      dates: "",
       active: true,
       description:
         "ProHire is a full-stack job portal web application where job seekers can search and apply for jobs, and recruiters can post and manage job listings.",
@@ -189,7 +180,6 @@ export const DATA = {
     {
       title: "WanderLust",
       href: "https://wanderlust-ejs.vercel.app",
-      dates: "",
       active: true,
       description:
         "Wanderlust is a full-stack travel booking web application inspired by Airbnb. It allows users to explore, list, and book seamlessly.",
