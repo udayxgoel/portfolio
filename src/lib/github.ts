@@ -65,7 +65,10 @@ function extractMarkdownSection(markdown: string, heading: string) {
       continue;
     }
 
-    const headingText = line.replace(/^##\s+/, "").trim().toLowerCase();
+    const headingText = line
+      .replace(/^##\s+/, "")
+      .trim()
+      .toLowerCase();
 
     if (headingText.includes(normalizedHeading)) {
       sectionStartIndex = index + 1;
@@ -134,22 +137,6 @@ function resolveReadmeImageUrl(
   return `https://raw.githubusercontent.com/${repository.owner.login}/${repository.name}/${repository.default_branch}/${normalizedImagePath}`;
 }
 
-async function getRepositoryReadmeImage(repository: GitHubRepository) {
-  const readme = await getRepositoryReadme(repository);
-
-  if (!readme) {
-    return null;
-  }
-
-  const firstImage = extractFirstMarkdownImage(readme.markdown);
-
-  if (!firstImage) {
-    return null;
-  }
-
-  return resolveReadmeImageUrl(repository, readme.path, firstImage);
-}
-
 async function getRepositoryReadme(repository: GitHubRepository) {
   const response = await fetch(
     `https://api.github.com/repos/${repository.owner.login}/${repository.name}/readme`,
@@ -176,7 +163,6 @@ async function getRepositoryReadme(repository: GitHubRepository) {
 }
 
 export async function getGitHubRepositories(username: string) {
-  console.log(`Fetching GitHub repositories for ${username}...`);
   const response = await fetch(
     `https://api.github.com/users/${username}/repos?per_page=100&sort=updated`,
     {

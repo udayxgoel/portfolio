@@ -78,7 +78,6 @@ To run this project locally, follow these steps.
    NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
    NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
    NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=your_measurement_id
-
    GITHUB_TOKEN=your_github_token
    ```
 
@@ -131,7 +130,6 @@ The portfolio reads:
 
 - `GET /api/visitor-count`
 - `POST /api/visitor-count`
-- `GET /api/github/repos`
 
 ## 🤝 Contributing
 

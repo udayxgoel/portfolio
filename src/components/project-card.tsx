@@ -32,6 +32,8 @@ export function ProjectCard({
   links,
   className,
 }: Props) {
+  const visibleTags = tags.slice(0, 6);
+
   return (
     <Card
       className={cn(
@@ -40,7 +42,10 @@ export function ProjectCard({
       )}
     >
       <div className="flex flex-col gap-0 sm:flex-row sm:items-stretch">
-        <Link href={href || "#"} className="block sm:w-1/2 py-4 pl-4 ">
+        <Link
+          href={href || "#"}
+          className="block px-4 pt-4 sm:w-1/2 sm:py-4 sm:pl-4 sm:pr-0"
+        >
           <div className="relative aspect-video overflow-hidden rounded-xl border border-white/10 bg-[#0c0c0f]">
             {video ? (
               <video
@@ -96,28 +101,36 @@ export function ProjectCard({
             </div>
 
             {/* Description */}
-            <Markdown className="max-w-full text-pretty text-sm leading-6 text-zinc-300">
+            <Markdown className="line-clamp-3 max-w-full text-pretty text-sm leading-6 text-zinc-300">
               {description}
             </Markdown>
           </CardHeader>
 
           {/* Tech tags */}
           <CardContent className="p-4 pt-0 text-zinc-300">
-            {tags && tags.length > 0 ? (
+            {visibleTags.length > 0 ? (
               <div className="space-y-2.5">
                 <p className="text-sm font-semibold text-white">
                   Technologies Used:
                 </p>
                 <div className="flex flex-wrap gap-1">
-                  {tags.map((tag) => (
+                  {visibleTags.map((tag) => (
                     <Badge
-                      className="rounded-md border border-white/12 bg-white/5 px-2.5 py-0.75 text-[11px] font-medium text-zinc-100 shadow-none hover:bg-white/10"
+                      className="rounded-md border px-2.5 py-0.75 text-[11px] font-medium text-white shadow-none"
                       variant="outline"
                       key={tag}
                     >
                       {tag}
                     </Badge>
                   ))}
+                  {tags.length > visibleTags.length ? (
+                    <Badge
+                      className="rounded-md border px-2.5 py-0.75 text-[11px] font-medium text-white shadow-none"
+                      variant="outline"
+                    >
+                      +{tags.length - visibleTags.length} more
+                    </Badge>
+                  ) : null}
                 </div>
               </div>
             ) : null}
