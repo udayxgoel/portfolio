@@ -6,6 +6,7 @@ import BlurFade from "@/components/magicui/blur-fade";
 import { ProjectCard } from "@/components/project-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { DATA } from "@/data/resume";
+import { getGitHubProjectPreviews } from "@/lib/github";
 import {
   Check,
   CheckCircle2,
@@ -23,7 +24,7 @@ import Markdown from "react-markdown";
 
 const BLUR_FADE_DELAY = 0.04;
 
-export default function Page() {
+export default async function Page() {
   const xProfileUrl = DATA.contact.social.X.url;
   const xHandle = xProfileUrl.split("/").filter(Boolean).pop() ?? "";
   const emailLink = DATA.contact.social.email.url;
@@ -31,6 +32,10 @@ export default function Page() {
   const githubProfileUrl = DATA.contact.social.GitHub.url;
   const githubUsername =
     githubProfileUrl.split("/").filter(Boolean).pop() ?? "";
+  const projectPreviews = await getGitHubProjectPreviews(githubUsername);
+  const portfolioProjects = projectPreviews.filter(
+    (project) => project.isPortfolioProject,
+  );
   const skillsMid = Math.ceil(DATA.skills.length / 2);
   const topSkills = DATA.skills.slice(0, skillsMid);
   const bottomSkills = DATA.skills.slice(skillsMid);
@@ -312,20 +317,34 @@ export default function Page() {
             </div>
           </BlurFade>
           <div className="mx-auto grid w-full grid-cols-1 gap-5">
-            {DATA.projects.map((project, id) => (
+            {portfolioProjects.map((project, id) => (
               <BlurFade
-                key={project.title}
+                key={project.id}
                 className="w-full"
                 delay={BLUR_FADE_DELAY * 12 + id * 0.05}
               >
                 <ProjectCard
-                  href={project.href}
+                  href={project.websiteLink ?? project.sourceLink}
                   title={project.title}
                   description={project.description}
                   tags={project.technologies}
-                  image={project.image}
-                  video={project.video}
-                  links={project.links}
+                  image={project.image ?? undefined}
+                  links={[
+                    ...(project.websiteLink
+                      ? [
+                          {
+                            type: "Live",
+                            href: project.websiteLink,
+                            icon: <Icons.globe className="size-3" />,
+                          },
+                        ]
+                      : []),
+                    {
+                      type: "GitHub",
+                      href: project.sourceLink,
+                      icon: <Icons.github className="size-3" />,
+                    },
+                  ]}
                 />
               </BlurFade>
             ))}

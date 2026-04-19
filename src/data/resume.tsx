@@ -4,7 +4,7 @@ import { HomeIcon } from "lucide-react";
 export const DATA = {
   name: "Uday Goel",
   initials: "UG",
-  url: "https://udaygoel.me",
+  url: "https://udaygoel.dev",
   location: "India",
   summary: `I’m a **Full Stack Developer** who enjoys building products that solve real problems, not just projects that look good in screenshots. I work with **Next.js**, **TypeScript**, **TailwindCSS**, **Express**, **Node.js**, **MongoDB**, and **PostgreSQL** to ship fast, clean, and scalable experiences.
 `,
@@ -151,52 +151,6 @@ export const DATA = {
       logoUrl: "/squadifypro.webp",
       start: "Aug 2025",
       end: "Present",
-    },
-  ],
-  projects: [
-    {
-      title: "ProHire",
-      href: "https://prohirejobs.vercel.app",
-      active: true,
-      description:
-        "ProHire is a full-stack job portal web application where job seekers can search and apply for jobs, and recruiters can post and manage job listings.",
-      technologies: ["React.js", "Node.js", "Express.js", "Javascript"],
-      links: [
-        {
-          type: "Live",
-          href: "https://prohirejobs.vercel.app",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "GitHub",
-          href: "https://github.com/udayxgoel/ProHire",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "/prohire.png",
-      video: "",
-    },
-    {
-      title: "WanderLust",
-      href: "https://wanderlust-ejs.vercel.app",
-      active: true,
-      description:
-        "Wanderlust is a full-stack travel booking web application inspired by Airbnb. It allows users to explore, list, and book seamlessly.",
-      technologies: ["Node.js", "Express.js", "EJS", "Passport.js"],
-      links: [
-        {
-          type: "Website",
-          href: "https://wanderlust-ejs.vercel.app",
-          icon: <Icons.globe className="size-3" />,
-        },
-        {
-          type: "Source",
-          href: "https://github.com/udayxgoel/WanderLust",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
-      image: "/wanderlust.png",
-      video: "",
     },
   ],
 } as const;
