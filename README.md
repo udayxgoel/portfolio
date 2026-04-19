@@ -1,6 +1,6 @@
 # 💼 ProHire – Job Portal Website
 
-![ProHire Banner]([https://via.placeholder.com/1200x400?text=ProHire+Job+Portal](https://opensourcecollection.com/projects-storage/images/micropyramid-opensource-job-portal-2.png))
+![ProHire Banner](https://opensourcecollection.com/projects-storage/images/micropyramid-opensource-job-portal-2.png)
 
 ## 🚀 Overview
 **ProHire** is a full-stack job portal web application that connects job seekers with recruiters.  
