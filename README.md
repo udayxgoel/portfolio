@@ -1,6 +1,6 @@
 # Portfolio Website
 
-<img src="./public/project_demo.png" alt="Portfolio preview" width="160" />
+<img src="./public/project_demo.png" alt="Portfolio preview" />
 
 ## 💡 Overview
 
