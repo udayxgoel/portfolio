@@ -1,6 +1,6 @@
 # Portfolio Website
 
-<img src="./public/project_demo.png" alt="Portfolio preview" />
+![Portfolio preview](./public/project_demo.png)
 
 ## 💡 Overview
 

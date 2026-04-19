@@ -54,14 +54,47 @@ function extractFirstMarkdownImage(markdown: string) {
 }
 
 function extractMarkdownSection(markdown: string, heading: string) {
-  const escapedHeading = heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const sectionPattern = new RegExp(
-    `^##\\s+${escapedHeading}\\s*$([\\s\\S]*?)(?=^##\\s+|\\Z)`,
-    "im",
-  );
-  const match = markdown.match(sectionPattern);
+  const lines = markdown.split("\n");
+  const normalizedHeading = heading.trim().toLowerCase();
+  let sectionStartIndex = -1;
 
-  return match?.[1]?.trim() ?? null;
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index].trim();
+
+    if (!line.startsWith("## ")) {
+      continue;
+    }
+
+    const headingText = line.replace(/^##\s+/, "").trim().toLowerCase();
+
+    if (headingText.includes(normalizedHeading)) {
+      sectionStartIndex = index + 1;
+      break;
+    }
+  }
+
+  if (sectionStartIndex === -1) {
+    return null;
+  }
+
+  const sectionLines: string[] = [];
+
+  for (let index = sectionStartIndex; index < lines.length; index += 1) {
+    const line = lines[index];
+
+    if (line.trim().startsWith("## ")) {
+      break;
+    }
+
+    sectionLines.push(line);
+  }
+
+  return sectionLines.join("\n").trim() || null;
+}
+
+function cleanTechnologyLabel(value: string) {
+  const withoutDescription = value.split(":")[0]?.trim() ?? value.trim();
+  return withoutDescription.replace(/\*\*/g, "").trim();
 }
 
 function extractTechnologiesFromMarkdown(markdown: string) {
@@ -76,6 +109,7 @@ function extractTechnologiesFromMarkdown(markdown: string) {
     .map((line) => line.trim())
     .filter((line) => /^[-*]\s+/.test(line))
     .map((line) => line.replace(/^[-*]\s+/, "").trim())
+    .map(cleanTechnologyLabel)
     .filter(Boolean);
 }
 
