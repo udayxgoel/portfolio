@@ -8,8 +8,7 @@ export const DATA = {
   location: "India",
   summary: `I’m a **Full Stack Developer** who enjoys building products that solve real problems, not just projects that look good in screenshots. I work with **Next.js**, **TypeScript**, **TailwindCSS**, **Express**, **Node.js**, **MongoDB**, and **PostgreSQL** to ship fast, clean, and scalable experiences.
 `,
-  visitorCount: 70,
-  avatarUrl: "/me.jpg",
+  avatarUrl: "/me.webp",
   skills: [
     {
       name: "Next.js",
@@ -149,7 +148,7 @@ export const DATA = {
       company: "SquadifyPro",
       location: "India",
       title: "Full Stack Developer",
-      logoUrl: "/squadifypro.jpg",
+      logoUrl: "/squadifypro.webp",
       start: "Aug 2025",
       end: "Present",
     },

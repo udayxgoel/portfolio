@@ -368,7 +368,7 @@ export default function Page() {
             </h2>
             <div className="flex justify-center">
               <LiveVisitorCount
-                namespace="udaygoel.me"
+                namespace="udaygoel.dev"
                 keyName="portfolio-visitors"
                 displayMode="ordinal"
                 className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs text-emerald-300 tabular-nums sm:text-sm"

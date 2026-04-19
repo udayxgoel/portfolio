@@ -69,9 +69,12 @@ export function LiveVisitorCount({
 
     const refreshCount = async () => {
       try {
-        const response = await fetch("/api/visitor-count", {
-          cache: "no-store",
-        });
+        const response = await fetch(
+          `/api/visitor-count?namespace=${encodeURIComponent(namespace)}&keyName=${encodeURIComponent(keyName)}`,
+          {
+            cache: "no-store",
+          },
+        );
         if (!response.ok) {
           return;
         }
