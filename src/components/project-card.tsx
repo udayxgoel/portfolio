@@ -101,7 +101,7 @@ export function ProjectCard({
             </div>
 
             {/* Description */}
-            <Markdown className="line-clamp-3 max-w-full text-pretty text-sm leading-6 text-zinc-300">
+            <Markdown className="line-clamp-2 max-w-full text-pretty text-sm leading-6 text-zinc-300">
               {description}
             </Markdown>
           </CardHeader>
