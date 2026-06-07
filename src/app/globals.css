@@ -158,6 +158,15 @@ code[data-line-numbers-max-digits="3"] > [data-line]::before {
   animation: skills-scroll-right 24s linear infinite;
 }
 
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 @keyframes skills-scroll-left {
   from {
     transform: translateX(0);

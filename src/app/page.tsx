@@ -15,13 +15,25 @@ import {
   Heart,
   Mail,
   MapPin,
-  Target,
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import Markdown from "react-markdown";
 
 const BLUR_FADE_DELAY = 0.04;
+const PROJECT_TITLE_ACRONYMS = new Set(["ai", "api", "ui", "ux", "saas"]);
+
+function formatProjectTitle(title: string) {
+  return title
+    .split(/[-_\s]+/)
+    .filter(Boolean)
+    .map((word) =>
+      PROJECT_TITLE_ACRONYMS.has(word.toLowerCase())
+        ? word.toUpperCase()
+        : word.charAt(0).toUpperCase() + word.slice(1),
+    )
+    .join(" ");
+}
 
 export default async function Page() {
   const xProfileUrl = DATA.contact.social.X.url;
@@ -110,12 +122,12 @@ export default async function Page() {
 
               <BlurFade delay={BLUR_FADE_DELAY * 1.5}>
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="inline-flex w-fit items-center gap-1.5 rounded-md border border-[#10233a] bg-[#06111f] px-2 py-1 text-xs font-medium text-[#e6f1ff] shadow-[0_0_0_1px_rgba(6,17,31,0.6)]">
-                    <Target
-                      className="h-3.5 w-3.5 text-orange-400 animate-pulse"
+                  <span className="inline-flex w-fit items-center gap-1.5 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2 py-1 text-xs font-medium text-emerald-300 animate-pulse">
+                    <CheckCircle2
+                      className="h-3.5 w-3.5 text-emerald-400"
                       aria-hidden="true"
                     />
-                    Focusing
+                    Open to work
                   </span>
                 </div>
               </BlurFade>
@@ -328,7 +340,7 @@ export default async function Page() {
               >
                 <ProjectCard
                   href={project.websiteLink ?? project.sourceLink}
-                  title={project.title}
+                  title={formatProjectTitle(project.title)}
                   description={project.description}
                   tags={project.technologies}
                   image={project.image ?? undefined}
@@ -338,14 +350,12 @@ export default async function Page() {
                           {
                             type: "Live",
                             href: project.websiteLink,
-                            icon: <Icons.globe className="size-3" />,
                           },
                         ]
                       : []),
                     {
                       type: "GitHub",
                       href: project.sourceLink,
-                      icon: <Icons.github className="size-3" />,
                     },
                   ]}
                 />
