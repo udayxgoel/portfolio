@@ -255,10 +255,16 @@ export default async function Page() {
                         <h3 className="text-base font-semibold leading-none tracking-tight sm:text-lg">
                           {work.company}
                         </h3>
-                        <ExternalLink
-                          className="h-3.5 w-3.5 text-muted-foreground"
-                          aria-hidden="true"
-                        />
+                        <Link
+                          href={work.companyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ExternalLink
+                            className="h-3.5 w-3.5 text-muted-foreground"
+                            aria-hidden="true"
+                          />
+                        </Link>
                         <span className="inline-flex items-center gap-1 rounded-md bg-emerald-500/15 px-2 py-0.5 text-xs font-medium text-emerald-500">
                           <CheckCircle2
                             className="h-3.5 w-3.5"

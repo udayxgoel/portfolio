@@ -146,6 +146,7 @@ export const DATA = {
   work: [
     {
       company: "SquadifyPro",
+      companyUrl: "https://www.squadifypro.com",
       location: "India",
       title: "Full Stack Developer",
       logoUrl: "/squadifypro.webp",
