@@ -38,6 +38,32 @@ function getGitHubHeaders() {
   };
 }
 
+export async function fetchGitHubRawFile(
+  owner: string,
+  repo: string,
+  filePath: string,
+  ref?: string,
+) {
+  const cleanPath = filePath.replace(/^\/+/, "");
+  const searchParams = new URLSearchParams();
+  if (ref) {
+    searchParams.set("ref", ref);
+  }
+  const queryString = searchParams.toString();
+  const url = `https://api.github.com/repos/${owner}/${repo}/contents/${cleanPath}${queryString ? `?${queryString}` : ""}`;
+
+  const token = process.env.GITHUB_TOKEN;
+  const headers: Record<string, string> = {
+    Accept: "application/vnd.github.raw+json",
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
+  };
+
+  return fetch(url, {
+    headers,
+    next: { revalidate: 3600 },
+  });
+}
+
 type GitHubReadmeResponse = {
   content: string;
   encoding: string;
@@ -119,14 +145,28 @@ function extractTechnologiesFromMarkdown(markdown: string) {
 function resolveReadmeImageUrl(
   repository: GitHubRepository,
   readmePath: string,
-  imagePath: string,
+  rawImagePath: string,
 ) {
-  if (/^https?:\/\//i.test(imagePath)) {
-    return imagePath;
+  const imagePath = rawImagePath.split("?")[0].split("#")[0];
+
+  const githubBlobMatch = imagePath.match(
+    /^(?:https?:)?\/\/(?:www\.)?github\.com\/([^/]+)\/([^/]+)\/blob\/([^/]+)\/(.+)$/i,
+  );
+  if (githubBlobMatch) {
+    const [, owner, repo, ref, pathStr] = githubBlobMatch;
+    return `/api/github/image?owner=${encodeURIComponent(owner)}&repo=${encodeURIComponent(repo)}&path=${encodeURIComponent(pathStr)}&ref=${encodeURIComponent(ref)}`;
   }
 
-  if (imagePath.startsWith("//")) {
-    return `https:${imagePath}`;
+  const githubRawMatch = imagePath.match(
+    /^(?:https?:)?\/\/raw\.githubusercontent\.com\/([^/]+)\/([^/]+)\/([^/]+)\/(.+)$/i,
+  );
+  if (githubRawMatch) {
+    const [, owner, repo, ref, pathStr] = githubRawMatch;
+    return `/api/github/image?owner=${encodeURIComponent(owner)}&repo=${encodeURIComponent(repo)}&path=${encodeURIComponent(pathStr)}&ref=${encodeURIComponent(ref)}`;
+  }
+
+  if (/^(?:https?:)?\/\//i.test(imagePath)) {
+    return imagePath;
   }
 
   const readmeDirectory = path.posix.dirname(readmePath);
@@ -134,7 +174,9 @@ function resolveReadmeImageUrl(
     ? imagePath.slice(1)
     : path.posix.normalize(path.posix.join(readmeDirectory, imagePath));
 
-  return `https://raw.githubusercontent.com/${repository.owner.login}/${repository.name}/${repository.default_branch}/${normalizedImagePath}`;
+  const cleanPath = normalizedImagePath.replace(/^\/+/, "");
+
+  return `/api/github/image?owner=${encodeURIComponent(repository.owner.login)}&repo=${encodeURIComponent(repository.name)}&path=${encodeURIComponent(cleanPath)}&ref=${encodeURIComponent(repository.default_branch)}`;
 }
 
 async function getRepositoryReadme(repository: GitHubRepository) {

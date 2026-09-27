@@ -47,6 +47,7 @@ export function ProjectCard({
 }: Props) {
   const [activeModal, setActiveModal] = useState<ModalType>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [hasImageError, setHasImageError] = useState(false);
   const visibleTags = tags.slice(0, 6);
   const extraTagCount = tags.length - visibleTags.length;
   const modalTitleId = `${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-project-modal-title`;
@@ -118,12 +119,13 @@ export function ProjectCard({
                   playsInline
                   className="pointer-events-none h-full w-full object-contain object-center"
                 />
-              ) : image ? (
+              ) : image && !hasImageError ? (
                 <Image
                   src={image}
                   alt={title}
                   width={800}
                   height={450}
+                  onError={() => setHasImageError(true)}
                   className="pointer-events-none h-full w-full object-contain object-center"
                 />
               ) : null}
@@ -249,7 +251,7 @@ export function ProjectCard({
 
             {activeModal === "details" ? (
               <div className="space-y-4">
-                {(video || image) && (
+                {(video || (image && !hasImageError)) && (
                   <div className="relative aspect-video overflow-hidden rounded-lg border border-white/10 bg-[#0c0c0f]">
                     {video ? (
                       <video
@@ -260,12 +262,13 @@ export function ProjectCard({
                         playsInline
                         className="h-full w-full object-contain object-center"
                       />
-                    ) : image ? (
+                    ) : image && !hasImageError ? (
                       <Image
                         src={image}
                         alt={title}
                         width={900}
                         height={506}
+                        onError={() => setHasImageError(true)}
                         className="h-full w-full object-contain object-center"
                       />
                     ) : null}
