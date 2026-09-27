@@ -164,7 +164,7 @@ async function getRepositoryReadme(repository: GitHubRepository) {
 
 export async function getGitHubRepositories(username: string) {
   const response = await fetch(
-    `https://api.github.com/users/${username}/repos?per_page=100&sort=updated`,
+    `https://api.github.com/user/repos?per_page=100&sort=updated&visibility=all`,
     {
       headers: getGitHubHeaders(),
       next: { revalidate: 300 },
@@ -177,13 +177,12 @@ export async function getGitHubRepositories(username: string) {
 
   const repositories = (await response.json()) as GitHubRepository[];
 
-  return repositories
-    .filter((repository) => !repository.private)
-    .sort(
-      (first, second) =>
-        new Date(second.pushed_at).getTime() -
-        new Date(first.pushed_at).getTime(),
-    );
+  return repositories.sort(
+    // no more filtering out private
+    (first, second) =>
+      new Date(second.pushed_at).getTime() -
+      new Date(first.pushed_at).getTime(),
+  );
 }
 
 export async function mapRepositoryToProjectPreview(
@@ -217,6 +216,5 @@ export async function mapRepositoryToProjectPreview(
 
 export async function getGitHubProjectPreviews(username: string) {
   const repositories = await getGitHubRepositories(username);
-
   return Promise.all(repositories.map(mapRepositoryToProjectPreview));
 }
