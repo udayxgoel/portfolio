@@ -106,7 +106,7 @@ export const DATA = {
     social: {
       Resume: {
         name: "Resume",
-        url: "https://drive.google.com/file/d/1pq8_cIUYkK5R1JkOV4mNu7hu6i0JCbd5/view?usp=drivesdk",
+        url: "https://drive.google.com/file/d/1S6yWfAxss4RnzPVmdKxwWjXnLjUoYJQT/view?usp=sharing",
         icon: Icons.resume,
         navbar: true,
       },
