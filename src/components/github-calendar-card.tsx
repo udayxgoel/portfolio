@@ -1,5 +1,6 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 
@@ -9,6 +10,7 @@ interface GitHubCalendarCardProps {
 
 export function GitHubCalendarCard({ username }: GitHubCalendarCardProps) {
   const [isMounted, setIsMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
   const currentYear = new Date().getFullYear();
   const yearStart = new Date(currentYear, 0, 1);
   const yearEnd = new Date(currentYear, 11, 31);
@@ -33,6 +35,7 @@ export function GitHubCalendarCard({ username }: GitHubCalendarCardProps) {
         username={username}
         year={currentYear}
         showWeekdayLabels
+        colorScheme={resolvedTheme === "dark" ? "dark" : "light"}
         transformData={(contributions) =>
           contributions.filter((day) => {
             const contributionDate = new Date(day.date);
@@ -46,8 +49,8 @@ export function GitHubCalendarCard({ username }: GitHubCalendarCardProps) {
           totalCount: "This year, I achieved {{count}} contributions",
         }}
         theme={{
-          light: ["#1f2937", "#14532d", "#166534", "#15803d", "#22c55e"],
-          dark: ["#1f2937", "#14532d", "#166534", "#15803d", "#22c55e"],
+          light: ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"],
+          dark: ["#18181b", "#14532d", "#166534", "#15803d", "#22c55e"],
         }}
       />
     </div>

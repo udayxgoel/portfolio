@@ -52,19 +52,23 @@ export default async function Page() {
   const bottomSkills = DATA.skills.slice(skillsMid);
 
   return (
-    <main className="flex flex-col min-h-[100dvh] space-y-10">
+    <main className="flex flex-col min-h-[100dvh] space-y-10 py-2">
       <BlurFade delay={BLUR_FADE_DELAY * 2.5}>
-        <header className="relative left-1/2 w-screen -translate-x-1/2 px-6 py-3 text-sm my-2">
-          <div className="mx-auto flex w-full items-center justify-between gap-4">
-            <span className="inline-flex items-center gap-1.5">
-              <MapPin className="h-4 w-4" aria-hidden="true" />
-              {DATA.location}
-            </span>
-            <span className="inline-flex items-center gap-1.5">
-              <Clock3 className="h-4 w-4" aria-hidden="true" />
-              <CurrentTime />
-            </span>
-          </div>
+        <header className="flex w-full items-center justify-between gap-4 py-3 text-sm text-muted-foreground">
+          <span className="inline-flex items-center gap-1.5 font-medium">
+            <MapPin
+              className="h-4 w-4 text-foreground/70"
+              aria-hidden="true"
+            />
+            {DATA.location}
+          </span>
+          <span className="inline-flex items-center gap-1.5 font-medium">
+            <Clock3
+              className="h-4 w-4 text-foreground/70"
+              aria-hidden="true"
+            />
+            <CurrentTime />
+          </span>
         </header>
       </BlurFade>
 
@@ -72,13 +76,13 @@ export default async function Page() {
         <div className="mx-auto w-full max-w-2xl">
           <div className="flex items-center gap-6">
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="size-28 rounded-xl">
+              <Avatar className="size-28 rounded-2xl border border-border/80 shadow-xs">
                 <AvatarImage
                   alt={DATA.name}
                   src={DATA.avatarUrl}
                   className="h-full w-full object-cover"
                 />
-                <AvatarFallback className="rounded-xl">
+                <AvatarFallback className="rounded-2xl">
                   {DATA.initials}
                 </AvatarFallback>
               </Avatar>
@@ -88,7 +92,7 @@ export default async function Page() {
               <BlurFade delay={BLUR_FADE_DELAY}>
                 <h1
                   id="hero-heading"
-                  className="flex min-w-0 items-center gap-2 text-[1.8rem] font-bold leading-none tracking-tight"
+                  className="flex min-w-0 items-center gap-2 text-[1.85rem] font-bold leading-none tracking-tight text-foreground"
                 >
                   <span className="truncate">{DATA.name}</span>
                   <span className="inline-flex items-center justify-center">
@@ -113,7 +117,7 @@ export default async function Page() {
                     href={xProfileUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex w-fit text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    className="inline-flex w-fit text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                   >
                     @{xHandle}
                   </Link>
@@ -122,9 +126,9 @@ export default async function Page() {
 
               <BlurFade delay={BLUR_FADE_DELAY * 1.5}>
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="inline-flex w-fit items-center gap-1.5 rounded-md border border-emerald-500/30 bg-emerald-500/10 px-2 py-1 text-xs font-medium text-emerald-300 animate-pulse">
+                  <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-0.75 text-xs font-medium text-emerald-700 dark:text-emerald-400 animate-pulse">
                     <CheckCircle2
-                      className="h-3.5 w-3.5 text-emerald-400"
+                      className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400"
                       aria-hidden="true"
                     />
                     Open to work
@@ -135,20 +139,21 @@ export default async function Page() {
           </div>
         </div>
       </section>
+
       <section id="about">
         <BlurFade delay={BLUR_FADE_DELAY * 4}>
-          <Markdown className="prose max-w-full text-pretty font-sans text-base leading-[1.7] text-muted-foreground dark:prose-invert">
+          <Markdown className="prose prose-zinc dark:prose-invert max-w-full text-pretty font-sans text-base leading-relaxed text-muted-foreground">
             {DATA.summary}
           </Markdown>
         </BlurFade>
 
         <BlurFade delay={BLUR_FADE_DELAY * 4.5}>
-          <div className="mt-4 flex flex-wrap items-center gap-2">
+          <div className="mt-5 flex flex-wrap items-center gap-2.5">
             <Link
               href={emailLink}
-              className="inline-flex items-center gap-2 rounded-md border border-zinc-700/80 bg-gradient-to-b from-zinc-900 to-zinc-950 px-3 py-1.5 text-sm font-medium text-zinc-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition-colors hover:border-zinc-500"
+              className="inline-flex items-center gap-2 rounded-xl bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow-xs transition-all hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              <Mail className="h-3.5 w-3.5 text-zinc-400" aria-hidden="true" />
+              <Mail className="h-4 w-4" aria-hidden="true" />
               Email Me
             </Link>
 
@@ -156,10 +161,10 @@ export default async function Page() {
               href={resumeLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-zinc-700/80 bg-gradient-to-b from-zinc-900 to-zinc-950 px-3 py-1.5 text-sm font-medium text-zinc-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition-colors hover:border-zinc-500"
+              className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2 text-sm font-medium text-foreground shadow-2xs transition-all hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               <Download
-                className="h-3.5 w-3.5 text-zinc-400"
+                className="h-4 w-4 text-muted-foreground"
                 aria-hidden="true"
               />
               Download CV
@@ -167,23 +172,24 @@ export default async function Page() {
           </div>
         </BlurFade>
       </section>
+
       <section id="skills">
         <div className="flex min-h-0 flex-col gap-y-3">
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
-            <h2 className="inline-flex w-fit border border-dashed border-border/80 px-3 py-1 text-xl font-bold">
+            <h2 className="inline-flex w-fit items-center rounded-lg border border-border/60 bg-muted/60 px-3 py-1 text-lg font-semibold tracking-tight text-foreground">
               My Skills
             </h2>
           </BlurFade>
           <div className="relative overflow-hidden py-1">
-            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-background to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-background to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-background to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-background to-transparent" />
 
             <BlurFade delay={BLUR_FADE_DELAY * 10}>
               <div className="skill-marquee skill-marquee-left mb-3 items-center">
                 {[...topSkills, ...topSkills].map((skill, idx) => (
                   <div
                     key={`${skill.name}-top-${idx}`}
-                    className="inline-flex shrink-0 items-center gap-2 rounded-md border border-border/70 bg-muted/40 px-2.5 py-1.5 text-sm font-medium"
+                    className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-border/80 bg-card px-3 py-1.5 text-sm font-medium text-card-foreground shadow-2xs hover:border-border transition-colors"
                   >
                     <Image
                       src={skill.logo}
@@ -204,7 +210,7 @@ export default async function Page() {
                 {[...bottomSkills, ...bottomSkills].map((skill, idx) => (
                   <div
                     key={`${skill.name}-bottom-${idx}`}
-                    className="inline-flex shrink-0 items-center gap-2 rounded-md border border-border/70 bg-muted/40 px-2.5 py-1.5 text-sm font-medium"
+                    className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-border/80 bg-card px-3 py-1.5 text-sm font-medium text-card-foreground shadow-2xs hover:border-border transition-colors"
                   >
                     <Image
                       src={skill.logo}
@@ -228,7 +234,7 @@ export default async function Page() {
           <BlurFade delay={BLUR_FADE_DELAY * 9}>
             <h2
               id="work-heading"
-              className="inline-flex w-fit border border-dashed border-border/80 px-3 py-1 text-xl font-bold"
+              className="inline-flex w-fit items-center rounded-lg border border-border/60 bg-muted/60 px-3 py-1 text-lg font-semibold tracking-tight text-foreground"
             >
               Work Experience
             </h2>
@@ -238,10 +244,10 @@ export default async function Page() {
               key={work.company}
               delay={BLUR_FADE_DELAY * 6 + id * 0.05}
             >
-              <article className="rounded-lg border border-dashed border-border/70 bg-card/30 p-3.5 sm:p-4">
+              <article className="rounded-2xl border border-border/80 bg-card p-4 sm:p-5 shadow-2xs transition-all hover:border-border hover:shadow-xs">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                  <div className="flex min-w-0 items-start gap-3">
-                    <Avatar className="size-12 rounded-md border">
+                  <div className="flex min-w-0 items-start gap-3.5">
+                    <Avatar className="size-12 rounded-xl border border-border bg-muted/30">
                       <AvatarImage
                         src={work.logoUrl}
                         alt={work.company}
@@ -250,37 +256,38 @@ export default async function Page() {
                       <AvatarFallback>{work.company[0]}</AvatarFallback>
                     </Avatar>
 
-                    <div className="min-w-0 space-y-1 md:space-y-0">
+                    <div className="min-w-0 space-y-1">
                       <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="text-base font-semibold leading-none tracking-tight sm:text-lg">
+                        <h3 className="text-base font-semibold tracking-tight text-foreground sm:text-lg">
                           {work.company}
                         </h3>
                         <Link
                           href={work.companyUrl}
                           target="_blank"
                           rel="noopener noreferrer"
+                          className="text-muted-foreground hover:text-foreground transition-colors"
                         >
                           <ExternalLink
-                            className="h-3.5 w-3.5 text-muted-foreground"
+                            className="h-3.5 w-3.5"
                             aria-hidden="true"
                           />
                         </Link>
-                        <span className="inline-flex items-center gap-1 rounded-md bg-emerald-500/15 px-2 py-0.5 text-xs font-medium text-emerald-500">
+                        <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:text-emerald-400">
                           <CheckCircle2
-                            className="h-3.5 w-3.5"
+                            className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400"
                             aria-hidden="true"
                           />
                           {work.end === "Present" ? "Ongoing" : "Completed"}
                         </span>
                       </div>
-                      <p className="text-sm text-muted-foreground sm:text-base">
+                      <p className="text-sm font-medium text-muted-foreground sm:text-base">
                         {work.title}
                       </p>
                     </div>
                   </div>
 
                   <div className="shrink-0 flex items-center justify-between gap-3 text-left sm:block sm:text-right">
-                    <p className="text-sm font-medium text-foreground sm:text-base">
+                    <p className="text-sm font-semibold text-foreground sm:text-base">
                       {work.start} - {work.end ?? "Present"}
                     </p>
                     <p className="text-sm text-muted-foreground sm:mt-0.5 sm:text-base">
@@ -299,19 +306,19 @@ export default async function Page() {
           <BlurFade delay={BLUR_FADE_DELAY * 9.5}>
             <h2
               id="github-heading"
-              className="inline-flex w-fit border border-dashed border-border/80 px-3 py-1 text-xl font-bold"
+              className="inline-flex w-fit items-center rounded-lg border border-border/60 bg-muted/60 px-3 py-1 text-lg font-semibold tracking-tight text-foreground"
             >
               GitHub Contributions
             </h2>
           </BlurFade>
 
           <BlurFade delay={BLUR_FADE_DELAY * 10}>
-            <article className="rounded-lg border border-dashed border-border/70 bg-card/30 p-3.5 sm:p-4">
+            <article className="rounded-2xl border border-border/80 bg-card p-4 sm:p-5 shadow-2xs">
               <Link
                 href={githubProfileUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mb-3 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="mb-3 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 <Icons.github className="h-4 w-4" />@{githubUsername}
               </Link>
@@ -329,7 +336,7 @@ export default async function Page() {
                 <BlurFade delay={BLUR_FADE_DELAY * 9}>
                   <h2
                     id="projects-heading"
-                    className="inline-flex w-fit border border-dashed border-border/80 px-3 py-1 text-xl font-bold"
+                    className="inline-flex w-fit items-center rounded-lg border border-border/60 bg-muted/60 px-3 py-1 text-lg font-semibold tracking-tight text-foreground"
                   >
                     My Projects
                   </h2>
@@ -373,23 +380,23 @@ export default async function Page() {
 
       <section id="closing-quote" aria-labelledby="closing-quote-heading">
         <BlurFade delay={BLUR_FADE_DELAY * 16}>
-          <div className="rounded-2xl border border-dashed border-border/70 bg-[#121212] px-5 py-8 text-zinc-200 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] sm:px-8">
+          <div className="rounded-2xl border border-border/80 bg-card px-6 py-8 text-card-foreground shadow-2xs relative overflow-hidden">
             <h2 id="closing-quote-heading" className="sr-only">
               Closing Quote
             </h2>
             <div className="flex gap-4 sm:gap-6">
               <div
-                className="select-none text-6xl font-semibold leading-none text-white/8 sm:text-8xl"
+                className="select-none text-6xl font-serif font-semibold leading-none text-muted-foreground/20 sm:text-8xl"
                 aria-hidden="true"
               >
                 “
               </div>
               <div className="flex-1 md:pt-2">
-                <p className="text-base italic leading-8 text-zinc-300 sm:text-2xl">
+                <p className="text-base italic leading-relaxed text-foreground/90 sm:text-xl font-serif">
                   You have the right to perform your duty, but not to the fruits
                   of your actions.
                 </p>
-                <p className="mt-2 text-right text-sm italic text-zinc-400 sm:text-base">
+                <p className="mt-3 text-right text-sm italic text-muted-foreground sm:text-base">
                   - Bhagavad Gita 2.47
                 </p>
               </div>
@@ -400,7 +407,7 @@ export default async function Page() {
 
       <footer id="footer" aria-labelledby="footer-heading">
         <BlurFade delay={BLUR_FADE_DELAY * 17}>
-          <div className="border-t border-border/50 px-2 py-5">
+          <div className="border-t border-border/60 px-2 py-6">
             <h2 id="footer-heading" className="sr-only">
               Footer
             </h2>
@@ -409,17 +416,17 @@ export default async function Page() {
                 namespace="udaygoel.dev"
                 keyName="portfolio-visitors"
                 displayMode="ordinal"
-                className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs text-emerald-300 tabular-nums sm:text-sm"
+                className="rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3.5 py-1 text-xs font-medium text-emerald-700 dark:text-emerald-400 tabular-nums sm:text-sm"
               />
             </div>
-            <div className="mt-4 flex flex-col items-center justify-between gap-2 text-center text-sm text-zinc-400 sm:flex-row sm:gap-3 sm:text-left">
-              <p className="text-center sm:text-left">
+            <div className="mt-4 flex flex-col items-center justify-between gap-2 text-center text-sm text-muted-foreground sm:flex-row sm:gap-3 sm:text-left">
+              <p className="text-center text-foreground sm:text-left font-medium">
                 © {new Date().getFullYear()}. All rights reserved
               </p>
 
-              <p className="text-center text-zinc-200 sm:text-right">
+              <p className="text-center text-foreground font-medium sm:text-right">
                 Designed &amp; Made with
-                <Heart className="mb-0.5 ml-1 inline h-4 w-4 fill-rose-500 text-rose-500" />
+                <Heart className="mb-0.5 ml-1.5 inline h-4 w-4 fill-rose-500 text-rose-500" />
               </p>
             </div>
           </div>
