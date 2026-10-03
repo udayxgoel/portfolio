@@ -9,6 +9,8 @@ import {
 import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 const COUNTER_COLLECTION_NAME = "visitorCounts";
 const VISITOR_COLLECTION_NAME = "visitorCountVisitors";

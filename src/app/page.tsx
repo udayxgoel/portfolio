@@ -56,17 +56,11 @@ export default async function Page() {
       <BlurFade delay={BLUR_FADE_DELAY * 2.5}>
         <header className="flex w-full items-center justify-between gap-4 py-3 text-sm text-muted-foreground">
           <span className="inline-flex items-center gap-1.5 font-medium">
-            <MapPin
-              className="h-4 w-4 text-foreground/70"
-              aria-hidden="true"
-            />
+            <MapPin className="h-4 w-4 text-foreground/70" aria-hidden="true" />
             {DATA.location}
           </span>
           <span className="inline-flex items-center gap-1.5 font-medium">
-            <Clock3
-              className="h-4 w-4 text-foreground/70"
-              aria-hidden="true"
-            />
+            <Clock3 className="h-4 w-4 text-foreground/70" aria-hidden="true" />
             <CurrentTime />
           </span>
         </header>
@@ -74,9 +68,9 @@ export default async function Page() {
 
       <section id="hero" aria-labelledby="hero-heading">
         <div className="mx-auto w-full max-w-2xl">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-5 sm:gap-6">
             <BlurFade delay={BLUR_FADE_DELAY}>
-              <Avatar className="size-28 rounded-2xl border border-border/80 shadow-xs">
+              <Avatar className="size-24 sm:size-28 shrink-0 rounded-2xl border border-border/80 shadow-xs">
                 <AvatarImage
                   alt={DATA.name}
                   src={DATA.avatarUrl}
@@ -88,14 +82,14 @@ export default async function Page() {
               </Avatar>
             </BlurFade>
 
-            <div className="flex min-w-0 flex-1 flex-col space-y-2">
+            <div className="flex min-w-0 flex-1 flex-col justify-center space-y-1 sm:space-y-1.5">
               <BlurFade delay={BLUR_FADE_DELAY}>
                 <h1
                   id="hero-heading"
-                  className="flex min-w-0 items-center gap-2 text-[1.85rem] font-bold leading-none tracking-tight text-foreground"
+                  className="flex min-w-0 items-center gap-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
                 >
                   <span className="truncate">{DATA.name}</span>
-                  <span className="inline-flex items-center justify-center">
+                  <span className="inline-flex shrink-0 items-center justify-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -111,29 +105,21 @@ export default async function Page() {
                 </h1>
               </BlurFade>
 
-              <BlurFade delay={BLUR_FADE_DELAY * 1.5}>
-                <div className="flex flex-wrap items-center gap-2">
-                  <Link
-                    href={xProfileUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex w-fit text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                  >
-                    @{xHandle}
-                  </Link>
-                </div>
+              <BlurFade delay={BLUR_FADE_DELAY * 1.25}>
+                <p className="text-base font-medium text-foreground/80 sm:text-lg">
+                  Full Stack Engineer
+                </p>
               </BlurFade>
 
               <BlurFade delay={BLUR_FADE_DELAY * 1.5}>
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-0.75 text-xs font-medium text-emerald-700 dark:text-emerald-400 animate-pulse">
-                    <CheckCircle2
-                      className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400"
-                      aria-hidden="true"
-                    />
-                    Open to work
-                  </span>
-                </div>
+                <Link
+                  href={xProfileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-fit text-sm font-normal text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  @{xHandle}
+                </Link>
               </BlurFade>
             </div>
           </div>
