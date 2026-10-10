@@ -6,7 +6,7 @@ export const DATA = {
   initials: "UG",
   url: "https://udaygoel.dev",
   location: "India",
-  summary: `I’m a **Full Stack Developer** who enjoys building products that solve real problems, not just projects that look good in screenshots. I work with **Next.js**, **TypeScript**, **TailwindCSS**, **Express**, **Node.js**, **MongoDB**, and **PostgreSQL** to ship fast, clean, and scalable experiences.
+  summary: `I build **reliable, scalable web applications** that turn ideas into real-world products. From intuitive user interfaces to robust backend systems, I focus on **great user experiences, clean architecture, and solving real business problems**.
 `,
   avatarUrl: "/me.webp",
   skills: [

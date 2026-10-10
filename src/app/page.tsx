@@ -324,7 +324,7 @@ export default async function Page() {
                     id="projects-heading"
                     className="inline-flex w-fit items-center rounded-lg border border-border/60 bg-muted/60 px-3 py-1 text-lg font-semibold tracking-tight text-foreground"
                   >
-                    My Projects
+                    My Work
                   </h2>
                 </BlurFade>
               </div>
