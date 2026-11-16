@@ -154,4 +154,4 @@ export const DATA = {
       end: "Nov 2026",
     },
   ],
-} as const;
+};
