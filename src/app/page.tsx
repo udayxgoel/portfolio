@@ -107,7 +107,7 @@ export default async function Page() {
 
               <BlurFade delay={BLUR_FADE_DELAY * 1.25}>
                 <p className="text-base font-medium text-foreground/80 sm:text-lg">
-                  Full Stack Engineer
+                  Full Stack Developer
                 </p>
               </BlurFade>
 
