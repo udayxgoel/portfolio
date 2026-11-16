@@ -106,7 +106,7 @@ export const DATA = {
     social: {
       Resume: {
         name: "Resume",
-        url: "https://drive.google.com/file/d/1hY8zJ_NSQ6su6Cm65-K5vEmc5O2ZA1QZ/view?usp=drive_link",
+        url: "https://drive.google.com/file/d/1AAiZTDjhcOW30X8qMeSOvIwHKzqeNB0l/view?usp=sharing",
         icon: Icons.resume,
         navbar: true,
       },
@@ -151,7 +151,7 @@ export const DATA = {
       title: "Full Stack Developer",
       logoUrl: "/squadifypro.webp",
       start: "Aug 2025",
-      end: "Present",
+      end: "Nov 2026",
     },
   ],
 } as const;
